@@ -25,6 +25,7 @@ def jogos_de_hoje(format='dict', cache=True):
     page = get_html_page(cache)
     titles = page.find_all('h3', class_='match-list_league-name')
     championships = page.find_all('div', class_='container content')
+    del (titles[0])
 
     results = []
 
@@ -32,10 +33,9 @@ def jogos_de_hoje(format='dict', cache=True):
         matchs = championship.find_all('div', class_='row align-items-center content')
 
         for match in matchs:
-            status = match.find('span', class_='status-name').text
+
             teams = match.find_all('div', class_='team-name')
             status = match.find('span', class_='status-name').text
-            scoreboard = match.find_all('span', class_='badge badge-default')
 
             team_home = teams[0].text.strip()
             team_visitor = teams[1].text.strip()
@@ -46,12 +46,12 @@ def jogos_de_hoje(format='dict', cache=True):
                 'league': titles[id].text,
             }
 
-
             results.append(info)
 
-    if (format == 'json'):
+    if format == 'json':
         return json.dumps(results)
     else:
         return results
+
 
 
