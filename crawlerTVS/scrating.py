@@ -21,7 +21,7 @@ def get_html_page(cache):
     return res
 
 
-def jogos_de_hoje(format='dict', cache=True):
+def jogos_de_hoje(format='dict', cache=False):
     page = get_html_page(cache)
     titles = page.find_all('h3', class_='match-list_league-name')
     championships = page.find_all('div', class_='container content')
