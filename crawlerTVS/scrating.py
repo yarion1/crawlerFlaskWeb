@@ -44,6 +44,10 @@ def jogos_de_hoje(format='dict', cache=False):
                 'match': '{} x {}'.format(team_home, team_visitor),
                 'status': status,
                 'league': titles[id].text,
+                'ember1': 'https://logodetimes.com/wp-content/uploads/{}.png'.format(team_home.lower()
+                                                                                     .replace(' ', '-')),
+                'ember2': 'https://logodetimes.com/wp-content/uploads/{}.png'.format(team_home.lower()
+                                                                                     .replace(' ', '-')),
             }
 
             results.append(info)
